@@ -1,23 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/time.h>
+#include <sys/timeb.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-    FILE *fIn = fopen("lfc.bmp", "rb");
-    FILE *fOut = fopen("lfc_gray.bmp", "wb");
+
+    struct timeval start2, end2;
+    struct timeb start, end;
+    int testInteger;
+    int diff;
+
+    FILE *fIn = fopen(argv[1], "rb");
+    FILE *fOut = fopen(argv[2], "wb");
     if (!fIn || !fOut)
     {
         printf("File error.\n");
         return 0;
     }
-
+    ///// timer
+    ftime(&start);
+    gettimeofday(&start2, NULL);
     unsigned char header[54];
     fread(header, sizeof(unsigned char), 54, fIn);
     fwrite(header, sizeof(unsigned char), 54, fOut);
 
-    int width = *(int*)&header[18];
-    int height = abs(*(int*)&header[22]);
+    int width = *(int *)&header[18];
+    int height = abs(*(int *)&header[22]);
     int stride = (width * 3 + 3) & ~3;
     int padding = stride - width * 3;
 
@@ -39,6 +49,13 @@ int main()
         fread(pixel, padding, 1, fIn);
         fwrite(pixel, padding, 1, fOut);
     }
+    ftime(&end);
+    gettimeofday(&end2, NULL);
+    diff = (int)(1000.0 * (end.time - start.time) + (end.millitm - start.millitm));
+    unsigned long time_in_microsStart = 1000000 * start2.tv_sec + start2.tv_usec;
+    unsigned long time_in_microsStop = 1000000 * end2.tv_sec + end2.tv_usec;
+    printf("\nTime2: %ld microsecons\n", time_in_microsStop - time_in_microsStart);
+
     fclose(fOut);
     fclose(fIn);
     return 0;
