@@ -85,9 +85,8 @@ int main(int argc, char *argv[])
                 }
                 fread(pixel, padding, 1, fIn);
                 fwrite(pixel, padding, 1, fOut);
-                 printf("I'm one of the children [pid: %d, ppid: %d] round 1  height %d\n",getpid(),getppid(),y);
             }
-            
+             printf("I'm one of the children [pid: %d, ppid: %d] round 1\n",getpid(),getppid());
         }
         else if (getpid() == getppid() + 2)
         {
@@ -102,9 +101,8 @@ int main(int argc, char *argv[])
                 }
                 fread(pixel, padding, 1, fIn);
                 fwrite(pixel, padding, 1, fOut);
-                printf("I'm one of the children [pid: %d, ppid: %d] round 2 height %d\n",getpid(),getppid(),y);
-            } 
-             
+            }
+             printf("I'm one of the children [pid: %d, ppid: %d] round 2\n",getpid(),getppid());
         }
         else if (getpid() == getppid() + 3)
         {
@@ -119,9 +117,8 @@ int main(int argc, char *argv[])
                 }
                 fread(pixel, padding, 1, fIn);
                 fwrite(pixel, padding, 1, fOut);
-                 printf("I'm one of the children [pid: %d, ppid: %d] round 3 height %d\n",getpid(),getppid(),y);
             }
-            
+             printf("I'm one of the children [pid: %d, ppid: %d] round 3\n",getpid(),getppid());
         }
         else if (getpid() == getppid() + 4)
         {
@@ -136,9 +133,8 @@ int main(int argc, char *argv[])
                 }
                 fread(pixel, padding, 1, fIn);
                 fwrite(pixel, padding, 1, fOut);
-                 printf("I'm one of the children [pid: %d, ppid: %d] round 4 height %d\n",getpid(),getppid(),y);
             }
-            
+             printf("I'm one of the children [pid: %d, ppid: %d] round 4\n",getpid(),getppid());
         }
 
         // That's the child, it print its pid, its parent pid and exits.
