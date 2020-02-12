@@ -74,9 +74,9 @@ int main(int argc, char *argv[])
     {
         if (getpid() == getppid() + 1)
         {
-            for (int y = 0; y < height / 2; ++y)
+            for (int y = 0; y < (height / 4)*1; ++y)
             {
-                for (int x = 0; x < width / 2; ++x)
+                for (int x = 0; x < width; ++x)
                 {
                     fread(pixel, 3, 1, fIn);
                     unsigned char gray = pixel[0] * 0.3 + pixel[1] * 0.58 + pixel[2] * 0.11;
@@ -90,9 +90,9 @@ int main(int argc, char *argv[])
         }
         else if (getpid() == getppid() + 2)
         {
-            for (int y = 0; y < height / 2; ++y)
+            for (int y = (height / 4)*1; y < (height / 4)*2; ++y)
             {
-                for (int x = width / 2; x < width; ++x)
+               for (int x = 0; x < width; ++x)
                 {
                     fread(pixel, 3, 1, fIn);
                     unsigned char gray = pixel[0] * 0.3 + pixel[1] * 0.58 + pixel[2] * 0.11;
@@ -106,9 +106,9 @@ int main(int argc, char *argv[])
         }
         else if (getpid() == getppid() + 3)
         {
-            for (int y = height / 2; y < height; ++y)
+            for (int y = (height / 4)*2; y < (height / 4)*3; ++y)
             {
-                for (int x = width / 2; x < width; ++x)
+                for (int x = 0; x < width; ++x)
                 {
                     fread(pixel, 3, 1, fIn);
                     unsigned char gray = pixel[0] * 0.3 + pixel[1] * 0.58 + pixel[2] * 0.11;
@@ -122,9 +122,9 @@ int main(int argc, char *argv[])
         }
         else if (getpid() == getppid() + 4)
         {
-            for (int y = height / 2; y < height; ++y)
+            for (int y = (height / 4)*3; y < (height / 4)*4; ++y)
             {
-                for (int x = 0; x < width / 2; ++x)
+                for (int x = 0; x < width; ++x)
                 {
                     fread(pixel, 3, 1, fIn);
                     unsigned char gray = pixel[0] * 0.3 + pixel[1] * 0.58 + pixel[2] * 0.11;
