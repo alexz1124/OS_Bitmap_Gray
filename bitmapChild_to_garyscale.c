@@ -72,8 +72,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        if (getpid() == getppid() + 1)
-        {
+      
             for (int y = 0; y < (height / 4)*1; ++y)
             {
                 for (int x = 0; x < width; ++x)
@@ -87,9 +86,8 @@ int main(int argc, char *argv[])
                 fwrite(pixel, padding, 1, fOut);
             }
              printf("I'm one of the children [pid: %d, ppid: %d] round 1\n",getpid(),getppid());
-        }
-        else if (getpid() == getppid() + 2)
-        {
+        
+        
             for (int y = (height / 4)*1; y < (height / 4)*2; ++y)
             {
                for (int x = 0; x < width; ++x)
@@ -103,9 +101,8 @@ int main(int argc, char *argv[])
                 fwrite(pixel, padding, 1, fOut);
             }
              printf("I'm one of the children [pid: %d, ppid: %d] round 2\n",getpid(),getppid());
-        }
-        else if (getpid() == getppid() + 3)
-        {
+        
+       
             for (int y = (height / 4)*2; y < (height / 4)*3; ++y)
             {
                 for (int x = 0; x < width; ++x)
@@ -120,8 +117,7 @@ int main(int argc, char *argv[])
             }
              printf("I'm one of the children [pid: %d, ppid: %d] round 3\n",getpid(),getppid());
         }
-        else if (getpid() == getppid() + 4)
-        {
+      
             for (int y = (height / 4)*3; y < (height / 4)*4; ++y)
             {
                 for (int x = 0; x < width; ++x)
@@ -135,10 +131,10 @@ int main(int argc, char *argv[])
                 fwrite(pixel, padding, 1, fOut);
             }
              printf("I'm one of the children [pid: %d, ppid: %d] round 4\n",getpid(),getppid());
-        }
+        
 
         // That's the child, it print its pid, its parent pid and exits.
-    }
+    
 
     return 0;
 }
