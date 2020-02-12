@@ -9,6 +9,7 @@ int main(void){
 
     for (i=0;i<4;i++) {
         pid[i] = fork();
+	printf("pidddddddd %d\n",pid[i]);
         if (pid[i] == 0) {
             break;
         }
