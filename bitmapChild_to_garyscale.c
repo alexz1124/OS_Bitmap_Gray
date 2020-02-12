@@ -47,6 +47,15 @@ int main(int argc, char *argv[])
         pid[i] = fork();
         if (pid[i] == 0)
         {
+            ftime(&end);
+            gettimeofday(&end2, NULL);
+            diff = (int)(1000.0 * (end.time - start.time) + (end.millitm - start.millitm));
+            unsigned long time_in_microsStart = 1000000 * start2.tv_sec + start2.tv_usec;
+            unsigned long time_in_microsStop = 1000000 * end2.tv_sec + end2.tv_usec;
+            printf("\nTime2: %ld microsecons\n", time_in_microsStop - time_in_microsStart);
+
+            fclose(fOut);
+            fclose(fIn);
             break;
         }
     }
@@ -125,15 +134,6 @@ int main(int argc, char *argv[])
 
         // That's the child, it print its pid, its parent pid and exits.
     }
-    ftime(&end);
-    gettimeofday(&end2, NULL);
-    diff = (int)(1000.0 * (end.time - start.time) + (end.millitm - start.millitm));
-    unsigned long time_in_microsStart = 1000000 * start2.tv_sec + start2.tv_usec;
-    unsigned long time_in_microsStop = 1000000 * end2.tv_sec + end2.tv_usec;
-    printf("\nTime2: %ld microsecons\n", time_in_microsStop - time_in_microsStart);
-
-    fclose(fOut);
-    fclose(fIn);
 
     return 0;
 }
