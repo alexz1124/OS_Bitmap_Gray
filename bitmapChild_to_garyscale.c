@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
                 }
                 fread(pixel, padding, 1, fIn);
                 fwrite(pixel, padding, 1, fOut);
-                //  printf("I'm one of the children [pid: %d, ppid: %d] round 1  height %d\n",getpid(),getppid(),y);
+                 printf("I'm one of the children [pid: %d, ppid: %d] round 1  height %d\n",getpid(),getppid(),y);
             }
             
         }
