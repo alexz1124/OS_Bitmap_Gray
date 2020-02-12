@@ -22,8 +22,16 @@ int main(void){
             wait(&tmp);
         }
     } else {
-         printf("I'm one of the children [pid: %d, ppid: %d] round %d\n",getpid(),getppid(),round);
-        round++;
+        if(getppid()+1){
+             printf("I'm one of the children [pid: %d, ppid: %d] round 1\n",getpid(),getppid());
+        }else if(getppid()+2){
+            printf("I'm one of the children [pid: %d, ppid: %d] round 2\n",getpid(),getppid());
+        }else if(getppid()+3){
+            printf("I'm one of the children [pid: %d, ppid: %d] round 3\n",getpid(),getppid());
+        }else if(getppid()+4){
+            printf("I'm one of the children [pid: %d, ppid: %d] round 4\n",getpid(),getppid());
+        }
+        
         // That's the child, it print its pid, its parent pid and exits.
        
     }
