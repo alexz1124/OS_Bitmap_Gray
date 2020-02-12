@@ -22,13 +22,13 @@ int main(void){
             wait(&tmp);
         }
     } else {
-        if(getppid()+1){
+        if(getpid()==getppid()+1){
              printf("I'm one of the children [pid: %d, ppid: %d] round 1\n",getpid(),getppid());
-        }else if(getppid()+2){
+        }else if(getpid()==getppid()+2){
             printf("I'm one of the children [pid: %d, ppid: %d] round 2\n",getpid(),getppid());
-        }else if(getppid()+3){
+        }else if(getpid()==getppid()+3){
             printf("I'm one of the children [pid: %d, ppid: %d] round 3\n",getpid(),getppid());
-        }else if(getppid()+4){
+        }else if(getpid()==getppid()+4){
             printf("I'm one of the children [pid: %d, ppid: %d] round 4\n",getpid(),getppid());
         }
         
